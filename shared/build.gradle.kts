@@ -75,6 +75,8 @@ kotlin {
         implementation(Deps.Coroutines.android)
         implementation(Deps.Ktor.androidSerialization)
         implementation(Deps.Ktor.androidCore)
+        implementation ("net.zetetic:android-database-sqlcipher:4.4.0")
+        implementation ("androidx.sqlite:sqlite:2.0.1")
     }
 
     sourceSets["androidTest"].dependencies {
@@ -91,6 +93,11 @@ kotlin {
     sourceSets["iosMain"].dependencies {
         implementation(Deps.SqlDelight.driverIos)
         implementation(Deps.Ktor.ios)
+        implementation("co.touchlab:sqliter:0.7.1") {
+            version {
+                strictly("0.7.1")
+            }
+        }
         implementation(Deps.Coroutines.common) {
             version {
                 strictly(Versions.coroutines)
@@ -102,8 +109,9 @@ kotlin {
     cocoapodsext {
         summary = "Common library for the KaMP starter kit"
         homepage = "https://github.com/touchlab/KaMPKit"
+        pod("SQLCipher", "~> 4.0")
         framework {
-            isStatic = false
+            isStatic = true
             export(Deps.kermit)
             transitiveExport = true
         }
@@ -113,5 +121,6 @@ kotlin {
 sqldelight {
     database("KaMPKitDb") {
         packageName = "co.touchlab.kampkit.db"
+        linkSqlite = false
     }
 }

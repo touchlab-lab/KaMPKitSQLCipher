@@ -3,10 +3,12 @@ package co.touchlab.kampkit
 import co.touchlab.kampkit.db.KaMPKitDb
 import co.touchlab.kermit.Kermit
 import co.touchlab.kermit.NSLogLogger
+import co.touchlab.sqliter.DatabaseConfiguration
 import com.russhwolf.settings.AppleSettings
 import com.russhwolf.settings.Settings
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
+import com.squareup.sqldelight.drivers.native.wrapConnection
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass
 import org.koin.core.Koin
@@ -29,7 +31,22 @@ fun initKoinIos(
 )
 
 actual val platformModule = module {
-    single<SqlDriver> { NativeSqliteDriver(KaMPKitDb.Schema, "KampkitDb") }
+    single<SqlDriver> {
+        val schema = KaMPKitDb.Schema //SQLDelight Schema
+        val configuration = DatabaseConfiguration(
+            name = "KampkitDb",
+            version = schema.version,
+            create = { connection ->
+                wrapConnection(connection) { schema.create(it) }
+            },
+            upgrade = { connection, oldVersion, newVersion ->
+                wrapConnection(connection) { schema.migrate(it, oldVersion, newVersion ) }
+            }
+            ,key = cipherKey
+        )
+
+        NativeSqliteDriver(configuration)
+    }
 
     val baseKermit = Kermit(NSLogLogger()).withTag("KampKit")
     factory { (tag: String?) -> if (tag != null) baseKermit.withTag(tag) else baseKermit }
