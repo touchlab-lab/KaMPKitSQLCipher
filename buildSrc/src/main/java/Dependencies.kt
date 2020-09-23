@@ -1,0 +1,89 @@
+object Versions {
+    val min_sdk = 21
+    val target_sdk = 29
+    val compile_sdk = 29
+
+    val kotlin = "1.4.0"
+    val androidx_test = "1.2.0"
+    val androidx_test_ext = "1.1.1"
+    val android_gradle_plugin = "3.6.3"
+    val buildToolsVersion = "29.0.0"
+    val junit = "4.13"
+    val sqlDelight = "1.4.1"
+    val ktor = "1.4.0"
+    val stately = "1.1.0"
+    val multiplatformSettings = "0.6.1"
+    val coroutines = "1.3.9-native-mt"
+    val koin = "3.0.1-alpha-2"
+    val serialization = "1.0.0-RC"
+    val cocoapodsext = "0.11"
+    val kermit = "0.1.8"
+    val lifecycle = "2.1.0"
+    val karmok = "0.1.8"
+    val ktlint_gradle_plugin = "9.2.1"
+    val robolectric = "4.3.1"
+}
+
+object Deps {
+    val app_compat_x = "androidx.appcompat:appcompat:1.1.0"
+    val material_x = "com.google.android.material:material:1.1.0"
+    val core_ktx = "androidx.core:core-ktx:1.2.0"
+    val constraintlayout = "androidx.constraintlayout:constraintlayout:1.1.3"
+    val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
+    val android_gradle_plugin = "com.android.tools.build:gradle:${Versions.android_gradle_plugin}"
+    val junit = "junit:junit:${Versions.junit}"
+    val stately = "co.touchlab:stately-common:${Versions.stately}"
+    val multiplatformSettings = "com.russhwolf:multiplatform-settings:${Versions.multiplatformSettings}"
+    val multiplatformSettingsTest = "com.russhwolf:multiplatform-settings-test:${Versions.multiplatformSettings}"
+    val koinCore = "org.koin:koin-core:${Versions.koin}"
+    val koinTest = "org.koin:koin-test:${Versions.koin}"
+    val cocoapodsext = "co.touchlab:kotlinnativecocoapods:${Versions.cocoapodsext}"
+    val kermit = "co.touchlab:kermit:${Versions.kermit}"
+    val lifecycle_viewmodel = "android.arch.lifecycle:viewmodel:${Versions.lifecycle}"
+    val lifecycle_viewmodel_extensions = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    val lifecycle_livedata = "android.arch.lifecycle:livedata:${Versions.lifecycle}"
+    val lifecycle_extension = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+    val karmok = "co.touchlab:karmok-library:${Versions.karmok}"
+    val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
+
+    object AndroidXTest {
+        val core = "androidx.test:core:${Versions.androidx_test}"
+        val junit = "androidx.test.ext:junit:${Versions.androidx_test_ext}"
+        val runner = "androidx.test:runner:${Versions.androidx_test}"
+        val rules = "androidx.test:rules:${Versions.androidx_test}"
+    }
+
+    object KotlinTest {
+        val common =      "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
+        val annotations = "org.jetbrains.kotlin:kotlin-test-annotations-common:${Versions.kotlin}"
+        val jvm =         "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
+        val junit =       "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
+    }
+    object Coroutines {
+        val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    }
+    object SqlDelight{
+        val gradle = "com.squareup.sqldelight:gradle-plugin:${Versions.sqlDelight}"
+        val runtime = "com.squareup.sqldelight:runtime:${Versions.sqlDelight}"
+        val runtimeJdk = "com.squareup.sqldelight:runtime-jvm:${Versions.sqlDelight}"
+        val driverIos = "com.squareup.sqldelight:native-driver:${Versions.sqlDelight}"
+        val driverAndroid = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
+    }
+    object Ktor {
+        val commonCore = "io.ktor:ktor-client-core:${Versions.ktor}"
+        val commonJson = "io.ktor:ktor-client-json:${Versions.ktor}"
+        val commonLogging = "io.ktor:ktor-client-logging:${Versions.ktor}"
+        val jvmCore =     "io.ktor:ktor-client-core-jvm:${Versions.ktor}"
+        val androidCore = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
+        val jvmJson =     "io.ktor:ktor-client-json-jvm:${Versions.ktor}"
+        val jvmLogging =     "io.ktor:ktor-client-logging-jvm:${Versions.ktor}"
+        val ios =         "io.ktor:ktor-client-ios:${Versions.ktor}"
+        val iosCore =     "io.ktor:ktor-client-core-native:${Versions.ktor}"
+        val iosJson =     "io.ktor:ktor-client-json-native:${Versions.ktor}"
+        val iosLogging =     "io.ktor:ktor-client-logging-native:${Versions.ktor}"
+        val commonSerialization ="io.ktor:ktor-client-serialization:${Versions.ktor}"
+        val androidSerialization ="io.ktor:ktor-client-serialization-jvm:${Versions.ktor}"
+    }
+}
